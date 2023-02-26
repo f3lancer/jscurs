@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 2px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.write(
+            "<p>Завдання 13 Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.</p><br>"
+        )
+
+        positionx = parseFloat(prompt(`Введи розмір ширини поля`))
+        positiony = parseFloat(prompt(`Введи розмір висоти поля`))
+
+        document.write(`<table>`)
+        let numbeCell = 1
+        for (let i = 0; i < positionx; i++) {
+            document.write(`<tr>`)
+            for (let n = 0; n < positiony; n++) {
+                document.write(`<td>`)
+                document.write(numbeCell)
+                document.write(`</td>`)
+                numbeCell++
+            }
+            document.write(`</tr>`)
+        }
+        document.write(`</table>`)
+
+        randomNamber = 1 + Math.floor(Math.random() * numbeCell)
+        document.write(randomNamber)
+        do {
+            positionx = parseFloat(prompt(`Вгадай клітинку на полі`))
+        } while (positionx != randomNamber);
+    </script>
+</body>
+
+</html>

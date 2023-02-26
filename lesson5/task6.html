@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="red">
+
+    </div>
+    <script>
+        //  Знайти суму всіх непарних чисел, що знаходяться між
+        // заданими користувачем числами.
+        document.write(
+            "<p>Завдання 12 Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).</p><br>"
+        )
+    </script>
+    <table style="width: 400px">
+        <tr>
+            <script>
+                let vin = 'Не має очків'
+                let randomNamber1
+                let randomNamber2
+                for (let i = 0; i < 3; i++) {
+                    randomNamber = 1 + Math.floor(Math.random() * 3)
+                    document.write(
+                        `<td><img src = "img/${randomNamber}.jpg" alt = "img" style="width: 100px"></td>`
+                    )
+                    if (i == 0) {
+                        randomNamber1 = randomNamber
+                    } else if (randomNamber == randomNamber1 && i == 1) {
+                        randomNamber2 = randomNamber
+                    } else if (i == 2 && randomNamber == randomNamber2) {
+                        switch (randomNamber) {
+                            case 1:
+                                vin = 'Твій вигаш - 100 очків'
+                                break
+                            case 2:
+                                vin = 'Твій вигаш - 200 очків'
+                                break
+                            case 3:
+                                vin = 'Твій вигаш - 500 очків'
+
+                        }
+                    }
+                }
+                document.write(`</tr></table><br>${vin}`)
+            </script>
+
+
+
+</body>
+
+</html>
