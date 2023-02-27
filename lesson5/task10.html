@@ -23,7 +23,7 @@
                 sumProfitWeek = sumProfitWeek + profitDay
             }
             document.write(`Середній прибуток за ${i+1} тиждень становить - ${sumProfitWeek}<br>`)
-            sumProfit = sumProfit + sumProfitWeek
+            sumProfit += sumProfitWeek
             sumProfitWeek = 0
         }
         document.write(`Загальний прибуток становить - ${sumProfit}<br>`)

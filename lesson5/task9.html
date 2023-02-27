@@ -16,7 +16,7 @@
         let sumTemperatura = 0
         for (let i = 0; i < 12; i++) {
             TemperaturaForMount = parseFloat(prompt(`Введи температуру за ${i+1} місяць`))
-            sumTemperatura = sumTemperatura + TemperaturaForMount
+            sumTemperatura += TemperaturaForMount
         }
 
         document.write(`Середня температура за рік - ${sumTemperatura}`)

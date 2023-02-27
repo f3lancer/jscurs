@@ -15,7 +15,7 @@
         //  Знайти суму всіх непарних чисел, що знаходяться між
         // заданими користувачем числами.
         document.write(
-            "<p>Завдання 10 Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами. < /p><br>"
+            "<p>Завдання 10 Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами. </p><br>"
         )
         numbeUser1 = parseFloat(prompt(`Введи перше число`))
         numbeUser2 = parseFloat(prompt(`Введи друге число`))
@@ -29,7 +29,7 @@
         let sumNamber = 0
         for (let i = numbeUser2 + 1; i < numbeUser1; i++) {
             if (i % 2 !== 0) {
-                sumNamber = sumNamber + i
+                sumNamber += i
             }
         }
         document.write(`${sumNamber}<br>`)
