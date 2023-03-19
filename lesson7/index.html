@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson7</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 2px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Задача 0. Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+        document.write(
+            `Задача 0. Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.`
+        )
+        document.write(
+            `<p onclick="z0()" style="cursor: pointer;color: red;">Робота Задачі 0 тут</p><br>`
+        )
+
+        function season(MonNamber) {
+            switch (MonNamber) {
+                case 1:
+                case 2:
+                case 12:
+                    return 'зима'
+                case 3:
+                case 4:
+                case 5:
+                    return 'весна'
+                case 6:
+                case 7:
+                case 8:
+                    return 'літо'
+                default:
+                    return 'осінь'
+            }
+        }
+
+        function z0() {
+            const monthNamber = parseFloat(prompt(`Введи число місяця року`))
+
+            alert(`Пора року - ${season(qmonNamber)}`)
+        }
+        ////////////////////////////////////////////////////////////////////////////////
+        // Задача 1. Створити функцію, яка за номером місяця повертає його назву.
+
+        document.write(`Задача 1. Створити функцію, яка за номером місяця повертає його назву.`)
+        document.write(`<p onclick="z1()" class"z1" style="cursor: pointer;color: red;">Робота Задачі 1 тут</p><br>`)
+
+        function monthName(MonNamber) {
+            switch (MonNamber) {
+                case 1:
+                    return 'січень'
+                case 2:
+                    return 'лютий'
+                case 3:
+                    return 'березень'
+                case 4:
+                    return 'квітень'
+                case 5:
+                    return 'травень'
+                case 6:
+                    return 'червень'
+                case 7:
+                    return 'липень'
+                case 8:
+                    return 'серпень'
+                case 9:
+                    return 'вересень'
+                case 10:
+                    return 'жовтень'
+                case 11:
+                    return 'листопад'
+                case 12:
+                    return 'грудень'
+                default:
+                    return 'не має такого місяця'
+            }
+        }
+
+        function z1() {
+            const monthNamber1 = parseFloat(prompt(`Введи число місяця року`))
+            alert(`назва місяця -${monthName(monthNamber1)}`)
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // Задача 2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+        document.write(`Задача 2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.`)
+        document.write(`<p onclick="z2()" class"z2" style="cursor: pointer;color: red;">Робота Задачі 2 тут</p><br>`)
+
+        function fWorkDay(day) {
+            switch (day) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    return 'робочий'
+                default:
+                    return 'вихідний'
+            }
+        }
+
+        function z2() {
+            const workDay = parseFloat(prompt(`Введи число дна тижня`))
+            if (workDay >= 1 && workDay <= 7) {
+                alert(`${workDay} день тижня - ${fWorkDay(workDay)}`)
+            } else alert(`не має такого дня у тижні`)
+        }
+        ///////////////////////////////////////////////////////////////////
+        // Задача 3. Створити окремі функції, які для 4 чисел знаходять:
+        // 1)суму;
+        // 2)добуток;
+        // 3)середнє арифметичне;
+        // 4)мінімальне значення. 
+        document.write(`Задача 3. Створити окремі функції, які для 4 чисел знаходять:<br>`)
+        document.write(`1)суму<br>`)
+        document.write(`2)добуток;<br>`)
+        document.write(`3)середнє арифметичне;<br>`)
+        document.write(`4)мінімальне значення. <br>`)
+        document.write(`<p   style="cursor: pointer;color: red;">Робота Задачі 3</p>`)
+        document.write(`<p><button onclick="z3()" class="button3">Виконати завдання 3</button></p>`)
+
+        const namber1 = Math.floor(Math.random() * 10)
+        const namber2 = Math.floor(Math.random() * 10)
+        const namber3 = Math.floor(Math.random() * 10)
+        const namber4 = Math.floor(Math.random() * 10)
+
+        document.write(`перше число - ${namber1};<br>
+            друге число - ${namber2};<br>
+            третє число - ${namber3};<br>
+            четверте число - ${namber4};<br>`)
+
+        document.write(`<br><div class="z3"></div>`)
+        const text3 = document.querySelector('.z3')
+
+        function sumNamber(num1, num2, num3, num4) {
+            return num1 + num2 + num3 + num4
+        }
+
+        function productNamber(num1, num2, num3, num4) {
+            return num1 * num2 * num3 * num4
+        }
+
+        function arithmeticMeanNamber(num1, num2, num3, num4) {
+            return (num1 + num2 + num3 + num4) / 4
+        }
+
+        function minNamber(num1, num2, num3, num4) {
+            let min
+            min = num1
+            if (min > num2) min = num2
+            if (min > num3) min = num3
+            if (min > num4) min = num4
+            return min
+        }
+
+        function z3() {
+            text3.innerHTML = `сума чисел - ${sumNamber(namber1, namber2, namber3, namber4)}<br>
+            добуток чисел - ${productNamber(namber1, namber2, namber3, namber4)}<br>
+            середнє арифметичне чисел - ${arithmeticMeanNamber(namber1, namber2, namber3, namber4)}<br>
+            найменше число  - ${minNamber(namber1, namber2, namber3, namber4)}<br>`
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.
+        document.write(
+            `Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.`
+        )
+        const namber41 = Math.floor(Math.random() * 2000) - 1000
+        const namber42 = Math.floor(Math.random() * 2000) - 1000
+        const namber43 = Math.floor(Math.random() * 2000) - 1000
+
+        document.write(`<p>перше число : ${namber41};<br>
+            друге число : ${namber42};<br>
+            третє число : ${namber43};<br></p>`)
+        document.write(`<p><button onclick="z4()" class="button4">Виконати завдання 4</button></p>`)
+        document.write(`<br><div class="z4"></div>`)
+        const text4 = document.querySelector('.z4')
+
+
+        function evenNumber(num1, num2, num3) {
+            let numItem = 0
+            if (num1 % 2 === 0) numItem++
+            if (num2 % 2 === 0) numItem++
+            if (num3 % 2 === 0) numItem++
+            return numItem
+        }
+
+        function plusNumber(num1, num2, num3) {
+            let numItem = 0
+            if (num1 > 0) numItem++
+            if (num2 > 0) numItem++
+            if (num3 > 0) numItem++
+            return numItem
+        }
+
+        function moreNumber(num1, num2, num3) {
+            let numItem = 0
+            if (num1 > 100) numItem++
+            if (num2 > 100) numItem++
+            if (num3 > 100) numItem++
+            return numItem
+        }
+
+        function z4() {
+            text4.innerHTML = `кількість парних чисел - ${evenNumber(namber41, namber42, namber43)}<br>
+            кількість додатних чисел - ${plusNumber(namber41, namber42, namber43)}<br>
+            кількість більших за 100 чисел - ${moreNumber(namber41, namber42, namber43)}<br> `
+        }
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////            
+        // Задача 5. Створити окремі функції, які переводять:
+        // 1)	Сантиметри у дюйми;
+        // 2)	Кілограми у фунти;
+        // 3)	Кілометри у милі.
+
+        document.write(`Задача 5. Створити окремі функції, які переводять:<br>`)
+        document.write(`1)	Сантиметри у дюйми;<br>`)
+        document.write(`2)	Кілограми у фунти;<br>`)
+        document.write(`3)	Кілометри у милі.`)
+
+        const namber51 = Math.floor(Math.random() * 1000)
+        const namber52 = Math.floor(Math.random() * 1000)
+        const namber53 = Math.floor(Math.random() * 1000)
+
+        function smDm(cm) {
+            const dm = 0.39370079
+            return cm * dm
+        }
+
+        function kgFt(kg) {
+            const ft = 2.4419307
+            return kg * ft
+        }
+
+        function kmMl(km) {
+            const ml = 0.13391183
+            return km * ml
+        }
+
+
+        document.write(`<p>${namber51} сантиметрів - ${smDm(namber51).toFixed(2)} дюймів;<br>
+            ${namber52} кілограмів - ${kgFt(namber52).toFixed(2)} фунтів;<br>
+            ${namber53} кілометрів - ${kmMl(namber53).toFixed(2)} миль;</p>`)
+
+        // Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+
+        document.write(
+            `Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).`
+        )
+
+        function table(line, column, text) {
+
+            let table = `<table>`
+            for (let i = 0; i < line; i++) {
+                table = table + `<tr>`
+                for (let n = 0; n < column; n++) {
+                    table = table + `<td>${text}</td>`
+                }
+                table = table + `</tr>`
+            }
+            table = table + `</table>`
+            return table
+        }
+
+        document.write(`<p><button onclick="z6()" class="button4">Виконати завдання 6</button></p>`)
+        document.write(`<br><div class="z6"></div>`)
+        const text6 = document.querySelector('.z6')
+
+        function z6() {
+            const line = parseFloat(prompt(`Введи кількість рядків`))
+            const column = parseFloat(prompt(`Введи кількість стовпців`))
+            const textForTable = prompt(`Введи слово для заповнення в таблиці`)
+            text6.innerHTML = `${table(line,column,textForTable)}`
+        }
+        ///////////////////////////////////////////////////////////////////////////////
+        // Задача 7. Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)
+        document.write(
+            `Задача 7. Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)`
+        )
+
+        function writeImg(adres1, adres2, adres3, adres4) {
+            const namber = Math.floor(Math.random() * 3)
+            switch (namber) {
+                case 0:
+                    return adres1
+                case 1:
+                    return adres2
+                case 2:
+                    return adres3
+                default:
+                    return adres4
+            }
+        }
+
+        const img1 = `img/img1.jpg`
+        const img2 = `img/img2.jpg`
+        const img3 = `img/img3.jpg`
+        const img4 = `img/img4.jpg`
+
+        document.write(`<p><img src="${writeImg(img1, img2, img3, img4)}" alt="img"></p>`)
+
+
+        // Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, 
+        // заголовок та посилання, 
+        // куди переходимо при кліку на зображення 
+        // (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
+
+        document.write(
+            `Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення `
+        )
+
+
+        function baner(img, title, link) {
+            return `<a href="${link}" target="_blank" >${title} <p><img src="${img}" title="${title}"></p> </a>`
+        }
+
+
+
+        document.write(`<p><button onclick="z8()" class="button4">Виконати завдання 8</button></p>`)
+        document.write(`<div class="z8"></div>`)
+        const text8 = document.querySelector('.z8')
+
+        const img = 'img/img1.jpg'
+        const link = 'https://uk.wikipedia.org/wiki/Їжачок_(рід)'
+        const title = 'Іжачок'
+
+        function z8() {
+            text8.innerHTML = (baner(img, title, link))
+        }
+
+
+
+        // Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
+        document.write(
+            `Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.`
+        )
+
+        const temp1 = Math.floor(Math.random() * 65 - 25)
+        const temp2 = Math.floor(Math.random() * 65 - 25)
+        const temp3 = Math.floor(Math.random() * 65 - 25)
+        const temp4 = Math.floor(Math.random() * 65 - 25)
+        const temp5 = Math.floor(Math.random() * 65 - 25)
+        const temp6 = Math.floor(Math.random() * 65 - 25)
+        const temp7 = Math.floor(Math.random() * 65 - 25)
+
+        function minusTemp(temp1, temp2, temp3, temp4, temp5, temp6, temp7) {
+            let numTemp = 0
+            if (temp1 < 0) numTemp++
+            if (temp2 < 0) numTemp++
+            if (temp3 < 0) numTemp++
+            if (temp4 < 0) numTemp++
+            if (temp5 < 0) numTemp++
+            if (temp6 < 0) numTemp++
+            if (temp7 < 0) numTemp++
+            return numTemp
+        }
+        document.write(
+            `<p>Випадкові покази температури : ${temp1},${temp2},${temp3},${temp4},${temp5},${temp6},${temp7},</p>`)
+        document.write(`<p><button onclick="z9()" class="button4">Виконати завдання 9</button></p>`)
+        document.write(`<div class="z9"></div>`)
+        const text9 = document.querySelector('.z9')
+
+        function z9() {
+
+            text9.innerHTML = (
+                `Кількість відємних показів - ${minusTemp(temp1, temp2, temp3, temp4, temp5, temp6, temp7)}`)
+        }
+
+
+
+        // Задача 10. Дано покази температур (довільна кількість). Розробити функцію, 
+        // яка дозволить знайти середнє значення для додатних показів температури.
+        document.write(
+            `Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.`
+        )
+
+        document.write(
+            `<p>Випадкові покази температури : ${temp1},${temp2},${temp3},${temp4},${temp5},${temp6},${temp7},</p>`)
+        document.write(`<p><button onclick="z10()" class="button4">Виконати завдання 10</button></p>`)
+        document.write(`<div class="z10"></div>`)
+        const text10 = document.querySelector('.z10')
+
+
+        function plusTemp(temp1, temp2, temp3, temp4, temp5, temp6, temp7) {
+            let num = 0
+            let sumTemp = 0
+            if (temp1 > 0) {
+                num++
+                sumTemp += temp1
+            }
+            if (temp2 > 0) {
+                num++
+                sumTemp += temp2
+            }
+            if (temp3 > 0) {
+                num++
+                sumTemp += temp3
+            }
+            if (temp4 > 0) {
+                num++
+                sumTemp += temp4
+            }
+            if (temp5 > 0) {
+                num++
+                sumTemp += temp5
+            }
+            if (temp6 > 0) {
+                num++
+                sumTemp += temp6
+            }
+            if (temp7 > 0) {
+                num++
+                sumTemp += temp7
+            }
+            return sumTemp / num
+        }
+
+        function z10() {
+            text10.innerHTML = (
+                `середнє значення для додатних показів температури становить : ${plusTemp(temp1, temp2, temp3, temp4, temp5, temp6, temp7).toFixed(2)}`
+            )
+        }
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <a href="" target="_blank"></a>
+
+    <body>
+
+</html>
