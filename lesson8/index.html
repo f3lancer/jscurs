@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson8</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 2px solid;
+        }
+
+        .table8 {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // Задача 1. Дано масив, який містить оцінки з К предметів
+        // .Знайти середній бал і з’ ясувати до якої категорії він відноситься(відмінник, двійочник(
+        //   має хоча би одну двійку), хорошист(оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+        document.write(`Задача 1. Дано масив, який містить оцінки з К предметів. 
+        Знайти середній бал і з’ ясувати до якої категорії він відноситься(відмінник, двійочник
+        (має хоча би одну двійку), хорошист(оцінки добре і відмінно), трійочник(є хоча би одна трійка)).`)
+
+        function fillingRating() {
+            let arrRatingStudent = []
+            for (let i = 0; i < 5; i++) {
+                let rating = Math.floor(Math.random() * 4 + 2)
+                arrRatingStudent[i] = rating
+            }
+            return arrRatingStudent
+        }
+        let arrRatingStudent = fillingRating()
+
+        function rtingStudent(arr) {
+            let rting
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === 2) {
+                    rting = `двійочник`
+                    return rting
+                }
+            }
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === 3) {
+                    rting = `трійочник`
+                    return rting
+                }
+            }
+            rting = `хорошист`
+            return rting
+        }
+
+        function average(arr) {
+            let average = 0
+            for (let i = 0; i < arr.length; i++) {
+                average += arr[i]
+            }
+            return average / arr.length
+        }
+
+        document.write(`<br> оцінки студента : ${arrRatingStudent}`)
+        document.write(`<br> середня оцінка студента : ${average(arrRatingStudent).toFixed(0)}`)
+        document.write(`<br> статус студета: ${rtingStudent(arrRatingStudent)}<br><br>`)
+        // Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом тижня.Вивести на екран: •
+        //     номери днів, протягом яких кількість відвідувачів була меншою за 20;•
+        // номери днів, коли кількість відвідувачів була мінімальною;•
+        // номери днів, коли кількість відвідувачів була мінімальною;•
+        // загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+
+        document.write(`Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом тижня.
+        Вивести на екран: 
+        <br>• номери днів, протягом яких кількість відвідувачів була меншою за 20;
+<br>• номери днів, коли кількість відвідувачів була мінімальною;
+<br>• номери днів, коли кількість відвідувачів була максимальною;
+<br>• загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.<br>`)
+
+        function RatingPeople() {
+            let people = []
+            for (let i = 0; i < 7; i++) {
+                let rating = Math.floor(Math.random() * 100)
+                people[i] = rating
+            }
+            return people
+        }
+        const RatingPeopleAll = RatingPeople()
+
+        function numberDay(arr) {
+            let numberLess = []
+            let number = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < 20) {
+                    numberLess[number] = i + 1
+                    number++
+                }
+            }
+            if (numberLess.length < 1) {
+                return numberLess = `не було таких днів`
+            }
+            return numberLess
+        }
+
+        function Rating(arr, minMax) {
+            let newArr = [1]
+            let minNumber = arr[0]
+            let indexArr = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (minNumber === arr[i + 1]) {
+                    indexArr++
+                    newArr[indexArr] = (i + 2)
+                } else if (minMax === 'min') {
+                    if (minNumber > arr[i + 1]) {
+                        minNumber = arr[i + 1]
+                        indexArr = 0
+                        newArr.length = 1
+                        newArr[indexArr] = i + 2
+                    }
+                } else {
+                    if (minNumber < arr[i + 1]) {
+                        minNumber = arr[i + 1]
+                        indexArr = 0
+                        newArr.length = 1
+                        newArr[indexArr] = i + 2
+                    }
+                }
+            }
+            return newArr
+        }
+
+        function sumHuman(arr, start, end) {
+            let sumHuman = 0
+            for (let i = start - 1; i < end; i++) {
+                sumHuman += arr[i]
+            }
+            return sumHuman
+        }
+
+        function holiDayRating(arr) {
+
+        }
+
+        document.write(`<br> Кількість відвідувачів магазину : ${RatingPeopleAll}`)
+        document.write(`<br> Номери днів в котрих було відвідувачів менше 20 : ${numberDay(RatingPeopleAll)}`)
+        document.write(`<br>${Rating(RatingPeopleAll,'min')} дня людей було мінімально`)
+        document.write(`<br>${Rating(RatingPeopleAll,'man')} дня людей було максимально`)
+        document.write(`<br>У робочі дні відвідало магазин -  ${sumHuman(RatingPeopleAll,1,5)} відвідувачів`)
+        document.write(`<br>У вихідні дні відвідало магазин -  ${sumHuman(RatingPeopleAll,6,7)} людей`)
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        // Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я« Іван».
+        document.write(`<br><p>Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я« Іван».</p>`)
+        let NameStudents = ['Іван', 'Степан', 'Оксана', 'Вікторія', 'Іван', 'Мальвіна', 'Софія', 'Іван', 'Марюська',
+            'Ганя', 'Сніжанна', 'Софія', 'Сніжанна'
+        ]
+        document.write(`Імені студентів - ${NameStudents}`)
+
+
+        function findName(arr, parametr) {
+            let number = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === parametr) {
+                    number++
+                }
+            }
+            return number
+        }
+
+        document.write(`<p><button onclick="z3()" class="button4">Виконати завдання 3</button></p>`)
+        document.write(`<div class="z3"></div>`)
+        const text3 = document.querySelector('.z3')
+
+        function z3() {
+            text3.innerHTML = (
+                `Ім'я "Іван" повторюється ${findName(NameStudents, 'Іван')} разів.`
+            )
+        }
+        // Задача 4. Дано послідовність номерів автомобілів.Підрахувати кількість номерів, які: •починаються на букву« А»;•
+        // перша і остання літери співпадають;•
+        // складаються з більше ніш 5 символів;
+        document.write(`<br>Задача 4. Дано послідовність номерів автомобілів.Підрахувати кількість номерів, які: 
+<br>• починаються на букву« А»;
+<br>• перша і остання літери співпадають;
+<br> •складаються з більше ніш 5 символів;`)
+        const numbersCar = ['ВМ1777АХ', 'АМ3476ВА', 'СА8223ВН', 'ВХ6036ВН', 'ВТ5032ВЕ', 'АН4065ВА', 'ВС3255ВВ',
+            'АЕ4332ЕХ', 'ВС4325СР', 'АА3352СР'
+        ]
+        document.write(`<p>номери автомобілей : ${numbersCar}</p>`)
+
+        function firstNumberCar(arr, letter) {
+            let newArr = []
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i][0] == letter) {
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr
+        }
+
+        function firstEndNamberCar(arr) {
+            let newArr = []
+            for (let i = 0; i < arr.length; i++) {
+                text4.innerHTML += (`${i} - ${arr[i][0]}-`)
+                text4.innerHTML += (`${arr[i][arr[i].length-1]}; `)
+                if (arr[i][0] == arr[i][arr[0].length - 1]) {
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr
+        }
+
+        function maxLetterLength(arr, length1) {
+            let newArr = []
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].length > length1) {
+                    newArr.push(arr[i])
+                }
+
+            }
+            return newArr
+        }
+
+        document.write(`<p><button onclick="z4()" >Виконати завдання 4</button></p>`)
+        document.write(`<div class="z4"></div>`)
+        const text4 = document.querySelector('.z4')
+
+        function z4() {
+            text4.innerHTML = (
+                `Список номерів, що починаються на "А" ${firstNumberCar(numbersCar,'А')}.<br>
+                Список номерів, у яких перша та остання літери одинакові - ${firstEndNamberCar(numbersCar)}.<br>
+                Список номерів, у яких є більше 5 символів - ${maxLetterLength(numbersCar,5)}.<br>`
+            )
+        }
+
+        // Задача 5. Дано послідовність оцінок учня.Підрахувати кількість:
+        // 1) двійок
+        // 2) кількість хороших оцінок(добре, відмінно);
+        // 3) кількість оцінок, які нижче середнього.
+        document.write(` Задача 5. Дано послідовність оцінок учня.Підрахувати кількість:<br>
+        1) двійок<br>
+        2) кількість хороших оцінок(добре, відмінно);<br>
+        3) кількість оцінок, які нижче середнього.<br>`)
+
+        const evaluations = [5, 4, 3, 2, 2, 2, 3, 5, 5, 4, 5, 4, 3, 3, 4, 5, 2, 5, 4, 3, 3, 4]
+        document.write(`послідовність оцінок учня - ${evaluations}`)
+
+        function number2(arr, number1, number2) {
+            let sum2 = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === number1) {
+                    sum2++
+                }
+            }
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === number2) {
+                    sum2++
+                }
+            }
+            return sum2
+        }
+
+        document.write(`<p><button onclick="z5()" >Виконати завдання 5</button></p>`)
+        document.write(`<div class="z5"></div>`)
+        const text5 = document.querySelector('.z5')
+
+        function z5() {
+            text5.innerHTML = (
+                `Кількість двійок  ${number2(evaluations,2)}.<br>
+                кількість хороших оцінок(добре, відмінно) - ${number2(evaluations,4,5)}.<br>
+                кількість оцінок, які нижче середнього - ${number2(evaluations,2,3)}.<br>`
+            )
+        }
+
+        // Задача 6. Дано послідовність цін товарів та назв(у окремих масивах).Вивести на екран ті,
+        // які може собі дозволити користувач(кількість грошей задається).
+        // Приклад збереження даних
+        // let productsPrices = [1000, 20, 31]
+        // let productsTitles = [‘cheese’, ‘juice’, ‘bread’]
+
+        document.write(` Задача 6. Дано послідовність цін товарів та назв(у окремих масивах).Вивести на екран ті,<br>
+        які може собі дозволити користувач(кількість грошей задається).<br>
+        Приклад збереження даних<br>
+        let productsPrices = [1000, 20, 31]<br>
+        let productsTitles = [‘cheese’, ‘juice’, ‘bread’]<br><br>`)
+
+        let productsPrices = [1000, 20, 31, 150, 44, 10]
+        let productsTitles = ['cheese', 'juice', 'bread', 'banana', 'orange', 'apple']
+
+        for (let i = 0; i < productsPrices.length; i++) {
+            document.write(`${i+1} товар - ${productsTitles[i]}, ціна - ${productsPrices[i]};<br>`)
+        }
+
+        function product(productsPrices, productsTitles, money) {
+            let itemsNewArr = []
+            for (let i = 0; i < productsPrices.length; i++) {
+                if (productsPrices[i] <= money) {
+                    itemsNewArr.push([productsTitles[i]], [productsPrices[i]])
+                }
+            }
+            let index = 0
+            let line = 'товари які можеш собі дозволити : <br><table>'
+            for (let n = 0; n < itemsNewArr.length / 2; n++) {
+                line += '<tr>'
+                for (let z = 0; z < 2; z++) {
+                    line += '<td>'
+                    line += itemsNewArr[index]
+                    line += '</td>'
+                    index++
+                }
+                line += '</tr>'
+            }
+            line += '</table><br>'
+
+            if (itemsNewArr.length == 0) {
+                line = `<br> За ${money} нічого не купиш (((.`
+            }
+            return line
+        }
+
+
+        document.write(`<p><button onclick="z6()" >Виконати завдання 6</button></p>`)
+        document.write(`<div class="z6"></div>`)
+        const text6 = document.querySelector('.z6')
+
+        function z6() {
+            const amountMoney = parseFloat(prompt(`введи кількість грошей`))
+
+            text6.innerHTML = (
+                `${product(productsPrices,productsTitles,amountMoney)}`
+            )
+        }
+
+
+
+        // Задача 7. Дано послідовність платіжок протягом року.Знайти сумарну кількість грошей за:
+        // 1) за весь рік;
+        // 2) у першій половині року;
+        // 3) у другій половині року;
+        // 4) за літо;
+        // 5) за ІІ квартал;
+        // 6) за парні місяці(з парними номерами);
+        // 7) за місяці, які є початковими у сезоні(весна, літо, осінь, зима).
+
+
+        document.write(` Задача 7. Дано послідовність платіжок протягом року.Знайти сумарну кількість грошей за:<br>
+        1) за весь рік;<br>
+        2) у першій половині року;<br>
+        3) у другій половині року;<br>
+        4) за літо;<br>
+        5) за ІІ квартал;<br>
+        6) за парні місяці(з парними номерами);<br>
+        7) за місяці, які є початковими у сезоні(весна, літо, осінь, зима).<br>`)
+
+        const paymentMoney = [30, 23, 45, 12, 3, 34, 11, 87, 955, 45, 70, 234]
+
+        document.write(`<br>кількість платежів за рік по місяцях - ${paymentMoney}<br>`)
+
+        function sumMonsPayment(arr, arrMons) {
+            const arrLength = arrMons.length
+            let sum = 0
+            if (arrMons.length === 1) {
+                sum = arr[arrMons[0] - 1]
+            } else if (arrMons.length === 2) {
+                for (let i = arrMons[0] - 1; i < arrMons[1]; i++) {
+                    sum += arr[i]
+                }
+            } else if (arrMons.length > 2 && arrMons.length <= 12) {
+                for (let i = 0; i < arrMons.length; i++) {
+                    sum += arr[arrMons[i] - 1]
+                }
+            }
+            return sum
+        }
+
+
+        document.write(`<p><button onclick="z7()" >Виконати завдання 7</button></p>`)
+        document.write(`<div class="z7"></div>`)
+        const text7 = document.querySelector('.z7')
+        const fullYear = [1, 12]
+        const firstHalf = [1, 6]
+        const lastHalf = [6, 12]
+        const sammer = [6, 8]
+        const secondQuarter = [4, 6]
+        const evenMonths = [2, 4, 6, 8, 10, 12]
+        const mountSezon = [3, 6, 9, 12]
+
+        function z7() {
+            text7.innerHTML = (
+                `Сума грошей за рік - ${sumMonsPayment(paymentMoney,fullYear)}<br>
+                Сума грошей за першу половину року - ${sumMonsPayment(paymentMoney,firstHalf)}<br>
+                Сума грошей за другу половину року - ${sumMonsPayment(paymentMoney,lastHalf)}<br>
+                Сума грошей за літо - ${sumMonsPayment(paymentMoney,sammer)}<br>
+                Сума грошей за ІІ квартал - ${sumMonsPayment(paymentMoney,secondQuarter)}<br>
+                Сума грошей за за парні місяці - ${sumMonsPayment(paymentMoney,evenMonths)}<br>
+                Сума грошей за за місяці, які є початковими у сезоні - ${sumMonsPayment(paymentMoney,mountSezon)}<br>`
+            )
+        }
+
+        // Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума(
+        //         елементи заповнюються випадковим чином значеннями від - 500 до 500)
+        //     .Надаючи користувачу можливість вибирати номери елементів(поки він не відмовиться).Знаходити сумарний виграш
+
+        document.write(
+            `<br>Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума<br>(
+         елементи заповнюються випадковим чином значеннями від - 500 до 500)<br>
+         Надаючи користувачу можливість вибирати номери елементів(поки він не відмовиться).Знаходити сумарний виграш.<br>`
+        )
+
+        let vinSum = []
+        for (let i = 0; i < 30; i++) {
+            vinSum[i] = Math.floor(Math.random() * 1000) - 500
+        }
+        vinSumNewarr = []
+        document.write(` <br><br><br><table><tbody><tr>`)
+        for (let i = 0; i < vinSum.length; i++) {
+            document.write(
+                `<td class="table8"><h1 class="h${i}" onclick="z8(${i})">?</h1></td>`
+            )
+        }
+        document.write(`</tr></tbody></table>`)
+        document.write(`<div class="z8"></div><br><br><br><br>`)
+        const text8 = document.querySelector('.z8')
+
+        function vinnumber6(arr, number) {
+            let textChanges = document.querySelector(`.h${number}`)
+            // console.log(textChanges);
+            textChanges.innerHTML = (arr[number])
+            vinSumNewarr.push(arr[number])
+            return vinSumNewarr
+        }
+
+        function vinSumt(arr, number) {
+            const newArr = vinnumber6(arr, number)
+            let finishSum = 0
+            for (let i = 0; i < newArr.length; i++) {
+                finishSum += newArr[i]
+            }
+            return finishSum
+        }
+
+        function z8(number) {
+            text8.innerHTML = (`Твій виграш становить: ${vinSumt(vinSum,number)}`)
+        }
+
+        // Задача 9. Морський бій
+        //.Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів
+        //.Комп’ ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці(якщо у клітинці 0,
+        //то клітинка пуста, якщо 1– то це означає, що там є корабель.Користувач вводить номер клітинки,
+        //куди стріляє.Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
+
+        document.write(`<br><br>Задача 9. Морський бій<br>
+        .Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів<br>
+        .Комп’ ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці(якщо у клітинці 0,<br>
+        то клітинка пуста, якщо 1– то це означає, що там є корабель.Користувач вводить номер клітинки,<br>
+        куди стріляє.Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.<br>`)
+
+        document.write(`<p><button onclick="z9()" >Виконати завдання 9</button></p>`)
+        document.write(`<div class="z9"></div><br><br><br><br>`)
+        const text9 = document.querySelector('.z9')
+
+
+        function randomf(field) {
+            let index = Math.floor(Math.random() * field)
+            return index
+        }
+        let shipsTable1
+        let numberShips
+        let numberShipstest = 0
+
+        function shipsTable(field, ship) {
+            // створити масив з кількістю елементів
+            let shipsTable = new Array(field)
+            //заповнюю нулями
+            shipsTable.fill(0)
+            // знаючи кількість кораблів генерую їх місце на площадці
+            let auditArr
+            // тут саме заповнення
+            for (let i = 0; i < ship; i++) {
+                do {
+                    // перевіряю чи не попало туди куди не треба
+                    index = randomf(field)
+                } while (shipsTable[index] === 1 || shipsTable[index] === 2);
+
+                if (index === 0) {
+                    shipsTable[index] = 1
+                    shipsTable[index + 1] = 2
+                } else if (index === 0) {
+                    shipsTable[index] = 1
+                    shipsTable[index - 1] = 2
+                } else {
+                    shipsTable[index - 1] = 2
+                    shipsTable[index] = 1
+                    shipsTable[index + 1] = 2
+                }
+
+            }
+
+            // тепер замість двійок заливаю нулі
+            for (let c = 0; c < shipsTable.length; c++) {
+                if (shipsTable[c] == 2) shipsTable[c] = 0
+            }
+
+
+            shipsTable1 = [...shipsTable]
+            return shipsTable
+        }
+
+
+
+        function answer(number) {
+            let textChanges = document.querySelector(`.h9${number}`)
+            textChanges.innerHTML = shipsTable1[number]
+
+
+            if (numberShips > numberShipstest && shipsTable1[number] === 1) {
+                numberShipstest++
+
+            }
+            if (numberShips == numberShipstest) {
+                text9.innerHTML = "Ти виграв)))"
+            }
+
+        }
+
+        function gamesShip(arr, ships) {
+            const arrMass = shipsTable(arr, ships)
+            let table = ` <br><br><br><table><tr>`
+            for (let i = 0; i < arrMass.length; i++) {
+                table += (
+                    `<td class="table8"><h1 class="h9${i}" onclick="answer(${i})">X</h1></td>`
+                )
+            }
+            table += (`</tr></table>`)
+            return table
+        }
+
+        function z9(number) {
+            const numberField = parseFloat(prompt(`введи кількість клітинок для поля!`))
+
+            do {
+                numberShips = parseFloat(prompt(
+                    `введи кількість кораблів не більше ${((numberField/2)-1).toFixed(0)}!`))
+
+            } while (numberShips > ((numberField / 2) - 1).toFixed(0));
+            text9.innerHTML += (gamesShip(numberField, numberShips))
+        }
+
+        //..
+    </script>
+</body>
+
+</html>
